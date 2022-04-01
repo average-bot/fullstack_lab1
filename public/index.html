@@ -10,21 +10,40 @@
 <body>
     <p>new epic file</p>
 
-    <h1>error:</h1>
-    <p id="error">none</p>
+    <section>
+        <h1>Here is a sign up form</h1>
+        <form id="sign-up-form">
+            <span>id</span>
+            <input type="text" id="sign-up-id">
+            <span>name</span>
+            <input type="text" id="sign-up-name">
+            <span>age</span>
+            <input type="text" id="sign-up-age">
+            <button type="submit">Create</button>
+        </form>
+        <p id="sign-up-error"></p>
+    </section>
     
-    <h1>Here is a sign up form</h1>
-    <form id="sign-up-form">
-        <span>id</span>
-        <input type="text" id="sign-up-id">
-        <span>name</span>
-        <input type="text" id="sign-up-name">
-        <span>age</span>
-        <input type="text" id="sign-up-age">
-        <button type="submit">Go</button>
-    </form>
-    <br>
-    <p id="users"></p>
-    <script src="app.js"></script>
+    <section>
+        <form id="search-form">
+            <span>id</span>
+            <input type="text" id="search-id">
+            <button type="submit">Search</button>
+        </form>
+        <p id="search-error"></p>
+        <p id="search-result"></p>
+    </section>
+
+    <section>
+        <form id="display-all-form">
+            <button type="submit">Display all</button>
+        </form>
+        <p id="display-all-error"></p>
+        <p id="display-all-results"></p>
+    </section>
+    
+    <script src="user/sign-up.js"></script>
+    <script src="user/search.js"></script>
+    <script src="user/display-all.js"></script>
 </body>
 </html>

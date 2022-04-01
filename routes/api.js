@@ -19,7 +19,7 @@ router.get('/users', async (req, res) => {
 
 // http://localhost:3000/api/users/:id
 // Create new User
-router.post('/users/:id', async (req, res) => {    
+router.post('/users/', async (req, res) => {    
   const user = new User({
     id: req.body.id,
     name: req.body.name,
@@ -27,12 +27,10 @@ router.post('/users/:id', async (req, res) => {
   });
 
   try {
-    const foundUser = await User.findOne({ id: req.params.id });
-    if(foundUser != null) {
-      throw new Error("User already exists");
-    }
-    const newUser = await user.save();
-    res.status(201).json({ newUser });
+    const foundUser = await User.findOne({ id: req.body.id });
+    if(foundUser) throw new Error("User already exists");
+      const newUser = await user.save();
+      res.status(201).json({ newUser });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
