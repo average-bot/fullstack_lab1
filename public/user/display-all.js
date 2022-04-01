@@ -20,9 +20,10 @@ displayForm.addEventListener('submit', e => {
     })
     .then(res => res.json())
     .then(response => { 
-        if(response.error) {
-            displayErrorMsg.innerHTML = response.error;
+        if(response.message) {
+            displayErrorMsg.innerHTML = response.message;
         } else {
+            displayResults.innerHTML = "";
             response.forEach(user => {
                 // change to a table
                 displayResults.innerHTML += "Id: " + user.id + ", Name: " + user.name + ", Age: " + user.age + "<br>";

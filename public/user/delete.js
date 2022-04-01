@@ -25,8 +25,8 @@ deleteForm.addEventListener('submit', e => {
         body: JSON.stringify(deleteDetails)
     })
     .then(response => { 
-        if(response.error) {
-            deleteErrorMsg.innerHTML = response.error;
+        if(response.message) {
+            deleteErrorMsg.innerHTML = response.message;
         } else {
             deleteErrorMsg.innerHTML = ''; // Show that its deleted
         }

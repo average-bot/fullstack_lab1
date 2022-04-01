@@ -25,11 +25,12 @@ searchForm.addEventListener('submit', e => {
     })
     .then(res => res.json())
     .then(response => { 
-        if(response.error) {
-            searchErrorMsg.innerHTML = response.error;
+        console.log(response.message);
+        if(response.message) {
+            searchErrorMsg.innerHTML = response.message;
         } else {
             searchResult.innerHTML = "Name: " + response.name + ", Age: " + response.age;
-            console.log(response);
+            console.log(response.message);
             searchErrorMsg.innerHTML = '';
         }
     });

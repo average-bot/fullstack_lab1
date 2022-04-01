@@ -30,8 +30,8 @@ updateForm.addEventListener('submit', e => {
     })
     .then(res => res.json())
     .then(response => { 
-        if(response.error) {
-            updateErrorMsg.innerHTML = response.error;
+        if(response.message) {
+            updateErrorMsg.innerHTML = response.message;
         } else {
             updateResult.innerHTML = "Id: " + response.id + ", Name: " + response.name + ", Age: " + response.age;
             console.log(response);

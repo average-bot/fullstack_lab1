@@ -27,8 +27,8 @@ signUpForm.addEventListener('submit', e => {
     })
     .then(res => res.json())
     .then(response => { 
-        if(response.error) {
-            signUpErrorMsg.innerHTML = response.error;
+        if(response.message) {
+            signUpErrorMsg.innerHTML = response.message;
         } else {
             console.log(response);
             signUpErrorMsg.innerHTML = '';
