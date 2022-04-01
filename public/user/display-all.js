@@ -25,7 +25,7 @@ displayForm.addEventListener('submit', e => {
         } else {
             response.forEach(user => {
                 // change to a table
-                displayResults.innerHTML += "Name: " + user.name + ", Age: " + user.age;
+                displayResults.innerHTML += "Id: " + user.id + ", Name: " + user.name + ", Age: " + user.age + "<br>";
             });
             
             console.log(response);

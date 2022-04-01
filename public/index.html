@@ -42,8 +42,35 @@
         <p id="display-all-results"></p>
     </section>
     
+    <section>
+        <form id="update-form">
+            <span>id</span>
+            <input type="text" id="update-id">
+            <span>name</span>
+            <input type="text" id="update-name">
+            <span>age</span>
+            <input type="text" id="update-age">
+            <button type="submit">Update</button>
+        </form>
+        <p id="update-error"></p>
+        <p id="update-result"></p>
+    </section>
+
+    <section>
+        <form id="delete-form">
+            <span>id</span>
+            <input type="text" id="delete-id">
+            <button type="submit">Delete</button>
+        </form>
+        <p id="delete-error"></p>
+        <p id="delete-results"></p>
+    </section>
+
+
     <script src="user/sign-up.js"></script>
     <script src="user/search.js"></script>
     <script src="user/display-all.js"></script>
+    <script src="user/update.js"></script>
+    <script src="user/delete.js"></script>
 </body>
 </html>
