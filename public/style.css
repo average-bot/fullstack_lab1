@@ -5,3 +5,12 @@ section{
 .error{
     color: red;
 }
+table{
+    padding: 10px;
+}
+table *{
+    padding: 20px;
+    border-radius: 1%;
+    border-style:double;
+    
+}

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section>
+   <section>
         <h1>Create a "user"</h1>
         <form id="sign-up-form">
             <span>id</span>
@@ -21,7 +21,18 @@
         </form>
         <p id="sign-up-error" class="error"></p>
     </section>
-    
+    <section>
+        <form id="display-all-form">
+            <button type="submit">Refresh</button>
+        </form>
+        <p id="display-all-error" class="error"></p>
+        <p id="display-all-results"></p>
+    </section>
+    <section>
+        <table id="users-table"></table>
+    </section>
+ 
+     <h1>Incase you do not want to use the table you can do it manually</h1>   
     <section>
         <h1>Search "user" by id</h1>
         <form id="search-form">
@@ -33,15 +44,8 @@
         <p id="search-result"></p>
     </section>
 
-    <section>
-        <h1>Display all "users"</h1>
-        <form id="display-all-form">
-            <button type="submit">Display all</button>
-        </form>
-        <p id="display-all-error" class="error"></p>
-        <p id="display-all-results"></p>
-    </section>
-    
+
+
     <section>
         <h1>Update a "user" by id</h1>
         <form id="update-form">
@@ -71,8 +75,9 @@
 
     <script src="user/sign-up.js"></script>
     <script src="user/search.js"></script>
-    <script src="user/display-all.js"></script>
+    
     <script src="user/update.js"></script>
-    <script src="user/delete.js"></script>
+    <script src="user/delete.js" ></script>
+    <script src="display-all.js"></script>
 </body>
 </html>
