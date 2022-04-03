@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <section>
+    <div id="left">
+        <section>
         <h1>Create a "user"</h1>
         <form id="sign-up-form">
             <span>id</span>
@@ -20,59 +21,62 @@
             <button type="submit">Create</button>
         </form>
         <p id="sign-up-error" class="error"></p>
-    </section>
-    <section>
-        <form id="display-all-form">
-            <button type="submit">Refresh</button>
-        </form>
-        <p id="display-all-error" class="error"></p>
-        <p id="display-all-results"></p>
-    </section>
-    <section>
-        <p>If you want to update double click on the name or age</p>
-        <table id="users-table"></table>
-    </section>
-    <p id="table-error"></p>
- 
-     <h1>Incase you do not want to use the table you can do it manually</h1>   
-    <section>
-        <h1>Search "user" by id</h1>
-        <form id="search-form">
-            <span>id</span>
-            <input type="text" id="search-id">
-            <button type="submit">Search</button>
-        </form>
-        <p id="search-error" class="error"></p>
-        <p id="search-result"></p>
-    </section>
+        </section>
+        <section>
+            <form id="display-all-form">
+                <button type="submit">Refresh</button>
+            </form>
+            <p id="display-all-error" class="error"></p>
+            <p id="display-all-results"></p>
+        </section>
+        <section>
+            <p>If you want to update double click on the name or age</p>
+            <table id="users-table"></table>
+        </section>
+        <p id="table-error"></p>
+    </div>
+
+    <div id="right">
+        <h1>Incase you do not want to use the table you can do it manually</h1>   
+        <section>
+            <h1>Search "user" by id</h1>
+            <form id="search-form">
+                <span>id</span>
+                <input type="text" id="search-id">
+                <button type="submit">Search</button>
+            </form>
+            <p id="search-error" class="error"></p>
+            <p id="search-result"></p>
+        </section>
 
 
 
-    <section>
-        <h1>Update a "user" by id</h1>
-        <form id="update-form">
-            <span>id</span>
-            <input type="text" id="update-id">
-            <span>name</span>
-            <input type="text" id="update-name">
-            <span>age</span>
-            <input type="text" id="update-age">
-            <button type="submit">Update</button>
-        </form>
-        <p id="update-error" class="error"></p>
-        <p id="update-result"></p>
-    </section>
+        <section>
+            <h1>Update a "user" by id</h1>
+            <form id="update-form">
+                <span>id</span>
+                <input type="text" id="update-id">
+                <span>name</span>
+                <input type="text" id="update-name">
+                <span>age</span>
+                <input type="text" id="update-age">
+                <button type="submit">Update</button>
+            </form>
+            <p id="update-error" class="error"></p>
+            <p id="update-result"></p>
+        </section>
 
-    <section>
-        <h1>Delete a "user" by id</h1>
-        <form id="delete-form">
-            <span>id</span>
-            <input type="text" id="delete-id">
-            <button type="submit">Delete</button>
-        </form>
-        <p id="delete-error" class="error"></p>
-        <p id="delete-results"></p>
-    </section>
+        <section>
+            <h1>Delete a "user" by id</h1>
+            <form id="delete-form">
+                <span>id</span>
+                <input type="text" id="delete-id">
+                <button type="submit">Delete</button>
+            </form>
+            <p id="delete-error" class="error"></p>
+            <p id="delete-results"></p>
+        </section>
+    </div>
 
 
     <script src="user/sign-up.js"></script>

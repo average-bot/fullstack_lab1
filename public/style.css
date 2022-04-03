@@ -1,3 +1,16 @@
+body{
+    display: flex;
+    flex-direction: row;
+}
+#left{
+    max-width: 50%;
+    height: auto;
+}
+#right{
+    max-width: 50%;
+    height: auto;
+}
+
 section{
     padding-top: 20px;
 }
