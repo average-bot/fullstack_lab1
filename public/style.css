@@ -6,11 +6,16 @@ section{
     color: red;
 }
 table{
+    width: 100%;
     padding: 10px;
 }
 table *{
+    
     padding: 20px;
     border-radius: 1%;
     border-style:double;
+    
+}
+.age{
     
 }

@@ -4,9 +4,7 @@ const displayForm = document.querySelector('#display-all-form');
 
 // Error messages
 const displayErrorMsg = document.querySelector('#display-all-error');
-
-// Display results
-const displayResults = document.querySelector('#display-all-results');
+const tableErrorMsg = document.querySelector('#table-error');
 
 // Table 
 const displayTable = document.querySelector('#users-table');
@@ -30,15 +28,47 @@ function showTable (){
         if(response.message) {
             displayErrorMsg.innerHTML = response.message;
         } else {
-            displayResults.innerHTML = "";
             displayTable.innerHTML = "";
             response.forEach(user => {
                 tr = displayTable.insertRow();
-
                 // cells with id name age
+                // id
                 tr.insertCell().innerHTML = user.id;
-                tr.insertCell().innerHTML = user.name;
-                tr.insertCell().innerHTML = user.age;
+                // name
+                namecell = tr.insertCell()
+                namecell.classList.add("name");
+                namecell.innerHTML = user.name;
+
+                namecell.ondblclick=function(){
+                    var val=this.innerHTML;
+                    var input=document.createElement("input");
+                    input.value=val;
+                    input.onblur=function(){
+                        var val=this.value;
+                        this.parentNode.innerHTML=val;
+                        user.name = val;
+                    }
+                    this.innerHTML="";
+                    this.appendChild(input);
+                }
+                // age
+                agecell = tr.insertCell()
+                agecell.classList.add("age");
+                agecell.innerHTML = user.age;
+               
+                agecell.ondblclick=function(){
+                    var val=this.innerHTML;
+                    var input=document.createElement("input");
+                    input.value=val;
+                    input.onblur=function(){
+                        var val=this.value;
+                        this.parentNode.innerHTML=val;
+                        user.age = val;
+                    }
+                    this.innerHTML="";
+                    this.appendChild(input);
+                    input.focus();
+                }
 
                 // cells with buttons
                 // delete row
@@ -58,8 +88,7 @@ function showTable (){
                 button.innerHTML="update";
                 button.addEventListener('click',  e=>{
                     e.preventDefault();
-    
-                    updateRow(user.id, "kalle", 54); // hardcoded
+                    updateRow(user.id, user.name, user.age);
                     setTimeout(showTable(), 400000);
                     showTable(); // refresh the table
                 });
@@ -80,7 +109,6 @@ function showTable (){
 
 // delete from database
 function deleteRow(id){
-    const deleteErrorMsg = document.querySelector('#delete-error');
         const deleteDetails = {
             id: id,
         };
@@ -93,16 +121,14 @@ function deleteRow(id){
         })
         .then(response => { 
             if(response.message) {
-                deleteErrorMsg.innerHTML = response.message;
+                tableErrorMsg.innerHTML = response.message;
             } else {
-                deleteErrorMsg.innerHTML = ''; // Show that its deleted
+                tableErrorMsg.innerHTML = ''; // Show that its deleted
             }
         });
 }
 
 function updateRow(id, updatedName, updatedAge){
-    //const updateName = document.querySelector('#update-name');
-    //const updateAge = document.querySelector('#update-age');
     const updateDetails = {
         id: id,
         name: updatedName,
@@ -119,11 +145,10 @@ function updateRow(id, updatedName, updatedAge){
     .then(res => res.json())
     .then(response => { 
         if(response.message) {
-            updateErrorMsg.innerHTML = response.message;
+            tableErrorMsg.innerHTML = response.message;
         } else {
-            //updateResult.innerHTML = "Name: " + response.name + ", Age: " + response.age;
-            console.log(response.name);
-            //updateErrorMsg.innerHTML = '';
+            console.log(response.name, response.age);
+            tableErrorMsg.innerHTML = '';
         }
     });
 }
@@ -139,10 +164,10 @@ function detailRow(id){
     .then(response => { 
         console.log(response.message);
         if(response.message) {
-            searchErrorMsg.innerHTML = response.message;
+            tableErrorMsg.innerHTML = response.message;
         } else {
             alert("Database id: " + response._id + ", __ value: " + response.__v);
-            searchErrorMsg.innerHTML = '';
+            tableErrorMsg.innerHTML = '';
         }
     });
 }

@@ -9,6 +9,7 @@ const signUpAge = document.querySelector('#sign-up-age');
 // error messages
 const signUpErrorMsg = document.querySelector('#sign-up-error');
 
+
 // Create new user
 signUpForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -31,6 +32,7 @@ signUpForm.addEventListener('submit', e => {
             signUpErrorMsg.innerHTML = response.message;
         } else {
             console.log(response);
+
             signUpErrorMsg.innerHTML = '';
         }
     });
