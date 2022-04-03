@@ -28,9 +28,9 @@ searchForm.addEventListener('submit', e => {
         console.log(response.message);
         if(response.message) {
             searchErrorMsg.innerHTML = response.message;
+            searchResult.innerHTML="";
         } else {
             searchResult.innerHTML = "Name: " + response.name + ", Age: " + response.age;
-            console.log(response.message);
             searchErrorMsg.innerHTML = '';
         }
     });

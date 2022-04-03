@@ -137,7 +137,7 @@ function updateRow(id, updatedName, updatedAge){
         if(response.message) {
             tableErrorMsg.innerHTML = response.message;
         } else {
-            console.log(response.name, response.age);
+            //console.log(response.name, response.age);
             tableErrorMsg.innerHTML = '';
         }
     });

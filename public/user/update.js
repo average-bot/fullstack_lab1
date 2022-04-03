@@ -32,10 +32,11 @@ updateForm.addEventListener('submit', e => {
     .then(response => { 
         if(response.message) {
             updateErrorMsg.innerHTML = response.message;
+            updateResult.innerHTML = "";
         } else {
             updateResult.innerHTML = "Id: " + response.id + ", Name: " + response.name + ", Age: " + response.age;
-            console.log(response);
             updateErrorMsg.innerHTML = '';
         }
     });
+    tableBuilder();
 });

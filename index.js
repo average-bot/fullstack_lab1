@@ -2,9 +2,9 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const User = require('./User');
+//const User = require('./User');
 const morgan = require('morgan');
-const PORT = 3000 || process.env.PORT;
+const PORT =  process.env.PORT || 3000;
 
 dotenv.config();
 // Middlewares

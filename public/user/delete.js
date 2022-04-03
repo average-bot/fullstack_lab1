@@ -28,8 +28,10 @@ deleteForm.addEventListener('submit', e => {
         if(response.message) {
             deleteErrorMsg.innerHTML = response.message;
         } else {
-            deleteErrorMsg.innerHTML = ''; // Show that its deleted
+            deleteErrorMsg.innerHTML = "";
         }
     });
+    deleteForm.reset();
+    tableBuilder();
 });
 

@@ -1,16 +1,51 @@
 body{
+    background-color: rgb(62, 10, 54);
+    font-family: "Lucida Console";
+}
+h1{
+    font-size: 1em;
+}
+p{
+    font-size: 0.9em;
+    color: grey;
+}
+form{
+    margin:5px;
+}
+#main{
+    padding: 6%;
+    background-color: white;
+    max-width: 80%;
     display: flex;
     flex-direction: row;
+    margin: auto;
 }
-#left{
+#logo{
     max-width: 50%;
     height: auto;
 }
-#right{
+#users-table button{
+    max-height: 50px;
+    max-width: 70px;
+}
+.left{
+    max-width: 50%;
+    height: auto;
+}
+.right{
+    margin-left: 10%;
     max-width: 50%;
     height: auto;
 }
 
+#sign-up-form, #update-form{
+    display: flex;
+    flex-direction: row;
+}
+span, input{height: 12px;}
+form input{
+    text-align: right;
+}
 section{
     padding-top: 20px;
 }
@@ -19,13 +54,28 @@ section{
     color: red;
 }
 table{
-    width: 100%;
+    width: 80%;
     padding: 10px;
 }
 table *{
-    
-    padding: 20px;
     border-radius: 1%;
-    border-style:double;
-    
+    border-style:groove;
 }
+table td{
+    padding: 15px;
+}
+
+@media only screen and (max-width: 1090px) {
+    #main {
+        flex-direction: column;
+    }
+    .left{
+        max-width: 90%;
+        height: auto;
+    }
+    .right{
+        margin-left: 0%;
+        max-width: 90%;
+        height: auto;
+    }
+  }
