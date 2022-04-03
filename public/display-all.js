@@ -31,80 +31,69 @@ function showTable (){
             displayTable.innerHTML = "";
             response.forEach(user => {
                 tr = displayTable.insertRow();
-                // cells with id name age
+                // cells
                 // id
-                tr.insertCell().innerHTML = user.id;
+                userCell(tr, user, "id");
                 // name
-                namecell = tr.insertCell()
-                namecell.classList.add("name");
-                namecell.innerHTML = user.name;
-
-                namecell.ondblclick=function(){
-                    var val=this.innerHTML;
-                    var input=document.createElement("input");
-                    input.value=val;
-                    input.onblur=function(){
-                        var val=this.value;
-                        this.parentNode.innerHTML=val;
-                        user.name = val;
-                    }
-                    this.innerHTML="";
-                    this.appendChild(input);
-                }
-                // age
-                agecell = tr.insertCell()
-                agecell.classList.add("age");
-                agecell.innerHTML = user.age;
-               
-                agecell.ondblclick=function(){
-                    var val=this.innerHTML;
-                    var input=document.createElement("input");
-                    input.value=val;
-                    input.onblur=function(){
-                        var val=this.value;
-                        this.parentNode.innerHTML=val;
-                        user.age = val;
-                    }
-                    this.innerHTML="";
-                    this.appendChild(input);
-                    input.focus();
-                }
+                userCell(tr, user, "name")
+                //age
+                userCell(tr, user, "age");
 
                 // cells with buttons
-                // delete row
-                td = tr.insertCell();
-                button = td.appendChild(document.createElement('button'));
-                button.innerHTML="delete";
-                button.addEventListener('click', e=>{
-                    e.preventDefault();
-                    deleteRow(user.id); // delete from the database
-                    setTimeout(showTable(), 400000);
-                    showTable(); // refresh the table
-                });
-                
-                // update row
-                td = tr.insertCell();
-                button = td.appendChild(document.createElement('button'));
-                button.innerHTML="update";
-                button.addEventListener('click',  e=>{
-                    e.preventDefault();
-                    updateRow(user.id, user.name, user.age);
-                    setTimeout(showTable(), 400000);
-                    showTable(); // refresh the table
-                });
-
-                // show details about row
-                td = tr.insertCell();
-                button = td.appendChild(document.createElement('button'));
-                button.innerHTML="details";
-                button.addEventListener('click', e=>{
-                    e.preventDefault();
-                    detailRow(user.id);
-                }); 
+                // delete button
+                buttonRouter(tr, user, "delete");
+                // update button
+                buttonRouter(tr, user, "update");
+                // show details button
+                buttonRouter(tr, user, "details")
             });
             displayErrorMsg.innerHTML = '';
+            tableErrorMsg.innerHTML = '';
         }
     });
+}
+// Cells for buttons + functionality
+function buttonRouter(tr, user, named){
+    td = tr.insertCell();
+    button = td.appendChild(document.createElement('button'));
+    button.innerHTML = named;
+    button.addEventListener('click',  e=>{
+        e.preventDefault();
+        if(named == "delete") deleteRow(user.id);
+        if(named == "update") updateRow(user.id, user.name, user.age);
+        if(named == "details") detailRow(user.id);
+        tableBuilder();
+    });
+}
+
+// Cells for id, name, age & editable
+function userCell(tr, user, cellName){
+    onecell = tr.insertCell()
+    if (cellName == "id") onecell.innerHTML = user.id;
+    if (cellName == "name") onecell.innerHTML = user.name;
+    if (cellName == "age") onecell.innerHTML = user.age;
+
+    if (cellName == "id") return; // cannot change user id!!
+    onecell.ondblclick=function(){
+        var val=this.innerHTML;
+        var input=document.createElement("input");
+        input.value=val;
+        input.onblur=function(){
+            var val=this.value;
+            this.parentNode.innerHTML=val;
+            if (cellName == "id") alert("You cannot change user id");
+            if (cellName == "name") user.name = val;
+            if (cellName == "age") user.age = val;
+        }
+        this.innerHTML="";
+        this.appendChild(input);
+    }
+}
+
+// Builds the table after waiting a bit
+function tableBuilder(){
+    setTimeout(showTable(), 400000);
+    showTable(); // refresh the table
 }
 
 // delete from database
@@ -128,6 +117,7 @@ function deleteRow(id){
         });
 }
 
+// update the row
 function updateRow(id, updatedName, updatedAge){
     const updateDetails = {
         id: id,
@@ -153,6 +143,7 @@ function updateRow(id, updatedName, updatedAge){
     });
 }
 
+//show details about the row
 function detailRow(id){
     fetch(`/api/users/${id}`, {
         method: 'GET',
@@ -172,4 +163,5 @@ function detailRow(id){
     });
 }
 
+// build the table when started
 showTable();

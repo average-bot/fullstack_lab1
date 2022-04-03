@@ -31,8 +31,8 @@ signUpForm.addEventListener('submit', e => {
         if(response.message) {
             signUpErrorMsg.innerHTML = response.message;
         } else {
-            console.log(response);
-
+            //console.log(response);
+            showTable();
             signUpErrorMsg.innerHTML = '';
         }
     });

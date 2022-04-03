@@ -64,6 +64,7 @@ router.put("/users/:id", async (req, res) => {
 		if (req.body.age) {
 			user.age = req.body.age;
 		}
+
 		await user.save();
 		res.send(user);
 	} catch (err) {
